@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int numberOfLines= scan.nextInt();
+        ArrayList<Integer>[] lines = new ArrayList[numberOfLines];
+        
+        for(int i=0; i<numberOfLines; i++){
+            
+            ArrayList<Integer> numbers= new ArrayList();
+            int d=scan.nextInt();
+            
+            for(int j=0;j<d;j++)
+            numbers.add(scan.nextInt());
+            lines[i]=numbers;
+        }
+        
+        int numberOfQueries= scan.nextInt();
+        for(int i=0; i<numberOfQueries; i++){
+            
+            int x=scan.nextInt();
+            int y=scan.nextInt();
+            
+            try
+            {
+                System.out.println(lines[x-1].get(y-1));
+            }
+            catch(Exception e)
+            {
+                System.out.println("ERROR!");
+            }
+        }
+        
+     scan.close();  
+    }
+}
