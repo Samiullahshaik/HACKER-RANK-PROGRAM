@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+            Scanner sc = new Scanner(System.in);
+    int n = Integer.parseInt(sc.nextLine());
+            ArrayList<Integer> vect = new ArrayList<>();
+    for(int i=0; i<n; i++) {
+
+        vect.add(i, sc.nextInt());
+    }
+    int q = sc.nextInt();
+    for(int i=0; i<q; i++) {
+        sc.nextLine(); //Eliminating the input buffer
+        String action = sc.nextLine();
+        if(action.equals("Insert")) {
+            int idx = sc.nextInt();
+            int value = sc.nextInt();
+            vect.add(idx, value);
+        }
+        else {
+          int idx = sc.nextInt();
+          vect.remove(idx);
+        }
+    }
+    for(Integer x: vect) {
+        System.out.print(x + " ");
+    }
+    sc.close();
+
+    }
+}
