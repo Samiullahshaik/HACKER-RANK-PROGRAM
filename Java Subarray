@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int count = scan.nextInt();
+        int[] arr = new int[count];
+        
+        for(int i = 0; i < count; i++){
+            arr[i] = scan.nextInt();
+        }
+        ArrayList<Integer> sumArr = new ArrayList<>();
+        
+        for(int i = 0; i < count; i++){
+            sumArr.add(arr[i]);
+        }
+        int poop = 0;
+        for(int j = count-1; j > 0; j--){
+            poop = calculate(sumArr, j, poop);
+        }
+        int negative = 0;
+        for(int k = 0; k < sumArr.size(); k++){
+            if(sumArr.get(k) < 0){
+                negative++;
+            }
+        }
+        System.out.println(negative);
+        
+        scan.close();
+    }
+    
+    public static int calculate(ArrayList<Integer> sumArr, int j, int poop){
+        for(int i = 0; i < j; i++){
+            sumArr.add(sumArr.get(i) + sumArr.get(poop+i+1) );
+        } 
+        return sumArr.size() - j;
+    }
+}
